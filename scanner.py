@@ -1,4 +1,4 @@
-import json, urllib, time, subprocess, sys
+import json, urllib, time, subprocess, sys, os
 from nmap_scanner import nmap_scan
 from time import sleep
 from reportlab.lib import colors
@@ -7,6 +7,10 @@ from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image, Table, TableStyle
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import inch
+
+if os.getuid() != 0:
+        print "You must run this tool as root. Exiting"
+        exit(-1)
 
 Story = []
 
